@@ -21,10 +21,10 @@ It is an important step in brain development study to perform automatic segmenta
 Here provides a glance at the effect of our proposed model. The baseline is [3-D Fully Convolutional Networks for Multimodal Isointense Infant Brain Image Segmentation](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8287819).
 
 **Visualization of the segmentation results on the 10th subject by our proposed model and the baseline model**:
-![model](./results/sample results.pdf)
+![model](./results/sample_results.png)
 
 **Comparison of training processes between our proposed model and the baseline model**:
-![model](./results/training curve.pdf)
+![model](./results/training_curve.png)
 
 ## System requirement
 
