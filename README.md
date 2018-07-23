@@ -1,6 +1,6 @@
 # 3D Unet for Isointense Infant Brain Image Segmentation
 
-This repository includes an (re-)implementation, using updated Tensorflow API, of [3D Unet](https://github.com/zhengyang-wang/Unet_3D) for isointense infant brain image segmentation. Besides, we implement our proposed global aggregation blocks, which modify self-attention layers for 3D Unet. The user can optionally insert the blocks to the standard 3D Unet.
+This repository includes an (re-)implementation, using updated Tensorflow APIs, of [3D Unet](https://github.com/zhengyang-wang/Unet_3D) for isointense infant brain image segmentation. Besides, we implement our proposed global aggregation blocks, which modify self-attention layers for 3D Unet. The user can optionally insert the blocks to the standard 3D Unet.
 
 For users who wants to use the standard 3D Unet, you need to modify network.py by removing line 62-67 and 72-79. Do not use "_att_decoding_block_layer" in "_build_network". Should you have any question, open an issue and I will respond.
 
