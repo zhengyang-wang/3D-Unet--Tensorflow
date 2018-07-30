@@ -116,7 +116,7 @@ class Network(object):
 
 		Args:
 			inputs: A tensor of size [batch, depth_in, height_in, width_in, channels].
-			filters: The number of filters for the first convolution of the layer.
+			filters: The number of filters for the convolutions.
 			block_fn: The block to use within the model.
 			blocks: The number of blocks contained in the layer.
 			strides: The stride to use for the first convolution of the layer. If
@@ -152,11 +152,11 @@ class Network(object):
 		Args:
 			inputs: A tensor of size [batch, depth_in, height_in, width_in, channels].
 			skip_inputs: A tensor of size [batch, depth_in, height_in, width_in, filters].
-			filters: The number of filters for the first convolution of the layer.
+			filters: The number of filters for the convolutions.
 			block_fn: The block to use within the model.
 			blocks: The number of blocks contained in the layer.
-			strides: The stride to use for the first convolution of the layer. If
-				greater than 1, this layer will ultimately downsample the input.
+			strides: The stride to use for the first deconvolution of the layer. If
+				greater than 1, this layer will ultimately upsample the input.
 			training: Either True or False, whether we are currently training the
 				model. Needed for batch norm.
 			name: A string name for the tensor output of the block layer.
@@ -190,11 +190,11 @@ class Network(object):
 		Args:
 			inputs: A tensor of size [batch, depth_in, height_in, width_in, channels].
 			skip_inputs: A tensor of size [batch, depth_in, height_in, width_in, filters].
-			filters: The number of filters for the first convolution of the layer.
+			filters: The number of filters for the convolutions.
 			block_fn: The block to use within the model.
 			blocks: The number of blocks contained in the layer.
-			strides: The stride to use for the first convolution of the layer. If
-				greater than 1, this layer will ultimately downsample the input.
+			strides: The stride to use for the first deconvolution of the layer. If
+				greater than 1, this layer will ultimately upsample the input.
 			training: Either True or False, whether we are currently training the
 				model. Needed for batch norm.
 			name: A string name for the tensor output of the block layer.
@@ -275,7 +275,7 @@ class Network(object):
 			projection_shortcut: The function to use for projection shortcuts
 				(typically a 1x1 convolution when downsampling the input).
 			strides: The block's stride. If greater than 1, this block will ultimately
-				downsample the input.
+				upsample the input.
 
 		Returns:
 			The output tensor of the block.
