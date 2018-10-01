@@ -232,7 +232,7 @@ class Model(object):
 		if not os.path.exists(self.conf.save_dir):
 			os.makedirs(self.conf.save_dir)
 		save_filename = 'preds-' + str(self.conf.checkpoint_num) + \
-						'-sub-' + str(self.conf.validation_id) + \
+						'-sub-' + str(self.conf.prediction_id) + \
 						'-overlap-' + str(self.conf.overlap_step) + \
 						'-patch-' + str(self.conf.patch_size) + '.npy'
 		save_file = os.path.join(self.conf.save_dir, save_filename)
