@@ -175,7 +175,8 @@ class Model(object):
 
 		cutted_T1 = T1[cut_size[0]:cut_size[1], cut_size[2]:cut_size[3], cut_size[4]:cut_size[5], :]
 		patch_ids = prepare_validation(cutted_T1, self.conf.patch_size, self.conf.overlap_step)
-		print ('Number of patches:', len(patch_ids))
+		num_patches = len(patch_ids)
+		print ('Number of patches:', num_patches)
 
 		print('Initialize...')
 		classifier = tf.estimator.Estimator(
@@ -207,7 +208,10 @@ class Model(object):
 		predictions = {}
 		for i, pred in enumerate(preds):
 			location = patch_ids[i]
-			print('Step %d: processing results for' % (i+1), location)
+			print('Step {:d}/{:d} processing results for ({:d},{:d},{:d})'.format(
+						i+1, num_patches, location[0], location[1], location[2]),
+						end='\r',
+						flush=True)
 			logits = pred['probabilities']
 			for j in range(self.conf.patch_size):
 				for k in range(self.conf.patch_size):
