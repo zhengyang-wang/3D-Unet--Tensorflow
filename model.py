@@ -4,7 +4,8 @@ import sys
 import numpy as np
 
 from network import Network
-from utils import input_function, cut_edge, prepare_validation, load_subject
+from input_fn import input_function
+from generate_tfrecord import cut_edge, prepare_validation, load_subject
 
 
 """This script trains or evaluates the model.
@@ -34,7 +35,6 @@ class Model(object):
 		Returns:
 			ModelFnOps
 		"""
-
 		net = Network(self.conf)
 		logits = net(features, mode == tf.estimator.ModeKeys.TRAIN)
 
@@ -130,30 +130,35 @@ class Model(object):
 			def input_fn_train():
 				return input_function(
 							data_dir=self.conf.data_dir,
-							training=True,
+							mode='train',
+							patch_size=self.conf.patch_size,
 							batch_size=self.conf.batch_size,
 							buffer_size=self.conf.num_training_subs,
 							valid_id=self.conf.validation_id,
-							overlap_step=self.conf.overlap_step, # not used
+							pred_id=-1, # not used
+							overlap_step=-1, # not used
 							num_epochs=self.conf.epochs_per_eval,
 							num_parallel_calls=self.conf.num_parallel_calls)
 
 			classifier.train(input_fn=input_fn_train, hooks=[logging_hook])
 
-			print('Starting to evaluate.')
+			if self.conf.validation_id != -1:
+				print('Starting to evaluate.')
 
-			def input_fn_eval():
-				return input_function(
-							data_dir=self.conf.data_dir,
-							training=False,
-							batch_size=self.conf.batch_size,
-							buffer_size=1, # not used
-							valid_id=self.conf.validation_id,
-							overlap_step=self.conf.overlap_step,
-							num_epochs=1,
-							num_parallel_calls=self.conf.num_parallel_calls)
+				def input_fn_eval():
+					return input_function(
+								data_dir=self.conf.data_dir,
+								mode='valid',
+								patch_size=self.conf.patch_size,
+								batch_size=self.conf.batch_size,
+								buffer_size=-1, # not used
+								valid_id=self.conf.validation_id,
+								pred_id=-1, # not used
+								overlap_step=self.conf.overlap_step,
+								num_epochs=1,
+								num_parallel_calls=self.conf.num_parallel_calls)
 
-			classifier.evaluate(input_fn=input_fn_eval)
+				classifier.evaluate(input_fn=input_fn_eval)
 
 
 	def predict(self):
@@ -165,11 +170,11 @@ class Model(object):
 		print('Loading data...')
 		[T1, _, _] = load_subject(self.conf.raw_data_dir, self.conf.validation_id)
 
-		cut_size = cut_edge(T1)
+		_, cut_size = cut_edge(T1)
 		print('Check cut_size: ',cut_size)
 
 		cutted_T1 = T1[cut_size[0]:cut_size[1], cut_size[2]:cut_size[3], cut_size[4]:cut_size[5], :]
-		patch_ids = prepare_validation(cutted_T1, self.conf.overlap_step)
+		patch_ids = prepare_validation(cutted_T1, self.conf.patch_size, self.conf.overlap_step)
 		print ('Number of patches:', len(patch_ids))
 
 		print('Initialize...')
@@ -180,10 +185,12 @@ class Model(object):
 		def input_fn_predict():
 			return input_function(
 						data_dir=self.conf.data_dir,
-						training=False,
+						mode='pred',
+						patch_size=self.conf.patch_size,
 						batch_size=self.conf.batch_size,
-						buffer_size=1, # not used
-						valid_id=self.conf.validation_id,
+						buffer_size=-1, # not used
+						valid_id=-1, # not used
+						pred_id=self.conf.prediction_id,
 						overlap_step=self.conf.overlap_step,
 						num_epochs=1,
 						num_parallel_calls=self.conf.num_parallel_calls)
@@ -226,7 +233,8 @@ class Model(object):
 			os.makedirs(self.conf.save_dir)
 		save_filename = 'preds-' + str(self.conf.checkpoint_num) + \
 						'-sub-' + str(self.conf.validation_id) + \
-						'-overlap-' + str(self.conf.overlap_step) +'.npy'
+						'-overlap-' + str(self.conf.overlap_step) + \
+						'-patch-' + str(self.conf.patch_size) + '.npy'
 		save_file = os.path.join(self.conf.save_dir, save_filename)
 		np.save(save_file, results)
 
