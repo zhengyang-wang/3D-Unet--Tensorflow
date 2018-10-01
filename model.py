@@ -165,12 +165,12 @@ class Model(object):
 		# Using the Winograd non-fused algorithms provides a small performance boost.
 		os.environ['TF_ENABLE_WINOGRAD_NONFUSED'] = '1'
 
-		print('Perform prediction for subject-%d:' % self.conf.validation_id)
+		print('Perform prediction for subject-%d:' % self.conf.prediction_id)
 
 		print('Loading data...')
-		[T1, _, _] = load_subject(self.conf.raw_data_dir, self.conf.validation_id)
+		[T1, _, _] = load_subject(self.conf.raw_data_dir, self.conf.prediction_id)
 
-		_, cut_size = cut_edge(T1)
+		(_, cut_size) = cut_edge(T1)
 		print('Check cut_size: ',cut_size)
 
 		cutted_T1 = T1[cut_size[0]:cut_size[1], cut_size[2]:cut_size[3], cut_size[4]:cut_size[5], :]
@@ -207,7 +207,7 @@ class Model(object):
 		predictions = {}
 		for i, pred in enumerate(preds):
 			location = patch_ids[i]
-			print('Step %d: processing results for ' % (i+1), location)
+			print('Step %d: processing results for' % (i+1), location)
 			logits = pred['probabilities']
 			for j in range(self.conf.patch_size):
 				for k in range(self.conf.patch_size):
