@@ -6,6 +6,12 @@ For users who wants to use the standard 3D Unet, you need to modify network.py b
 
 Created by [Zhengyang Wang](http://www.linkedin.com/in/zhengyangwang1991) and [Shuiwang Ji](http://www.linkedin.com/in/shuiwang-ji-9a040715/) at Texas A&M University.
 
+## Update
+**10/01/2018**:
+1. The code now works when we have subjects of different spatial sizes.
+
+2. During training, validation and prediction, you only need to change the configures in configure.py. Before, you have to change configures correspondingly in several files like main.py, utils/input_fn.py, etc.
+
 ## Publication
 
 Our paper "Global Deep Learning Methods for Isointense Infant Brain Image Segmentation" has been submitted to IEEE Medical Imaging.
@@ -41,6 +47,8 @@ tensorflow-gpu 1.7+, numpy, scipy
 All network hyperparameters are configured in main.py.
 
 #### Training
+
+raw_data_dir:the directory where the raw data is stored
 
 data_dir: the directory where the input data is stored
 
@@ -86,11 +94,11 @@ num_filters: number of filters for initial_conv
 
 #### Preprocess data
 
-Before training, we preprocess data into tfrecords format, which is optimized for Tensorflow. A good example of how to preprocess data and use tfrecords files as inputs can be found in utils/generate_tfrecord.py and utils/input_fn.py.
+Before training, we preprocess data into tfrecords format, which is optimized for Tensorflow. A good example of how to preprocess data and use tfrecords files as inputs can be found in generate_tfrecord.py and input_fn.py.
 
 #### Start training
 
-After configure main.py, we can start to train by running
+After configure configure.py, we can start to train by running
 ```
 python main.py
 ```
@@ -109,7 +117,12 @@ If you want to do testing, first make predictions by running
 python main.py --option='predict'
 ```
 
-Then, setup evaluation.py and run
+Then, if you have access to labels, setup evaluation.py and run
 ```
 python evaluation.py
+```
+
+You may also visualize the results. setup visualize.py and run
+```
+python visualize.py
 ```
