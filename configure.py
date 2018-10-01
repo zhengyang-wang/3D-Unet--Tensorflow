@@ -14,9 +14,9 @@ def configure():
 			'the directory where the input data is stored')
 	flags.DEFINE_integer('num_training_subs', 9,
 			'the number of subjects used for training')
-	flags.DEFINE_integer('train_epochs', 10,
+	flags.DEFINE_integer('train_epochs', 100000,
 			'the number of epochs to use for training')
-	flags.DEFINE_integer('epochs_per_eval', 10,
+	flags.DEFINE_integer('epochs_per_eval', 5000,
 			'the number of training epochs to run between evaluations')
 	flags.DEFINE_integer('batch_size', 5,
 			'the number of examples processed in each training batch')
@@ -36,7 +36,7 @@ def configure():
 			'overlap step size when performing validation/prediction')
 	flags.DEFINE_integer('validation_id', 10,
 			'1-10 or -1, which subject is used for validation')
-	flags.DEFINE_integer('prediction_id', 10,
+	flags.DEFINE_integer('prediction_id', 11,
 			'1-23, which subject is used for prediction')
 	flags.DEFINE_integer('checkpoint_num', 153000,
 			'which checkpoint is used for validation/prediction')
