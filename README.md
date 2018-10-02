@@ -4,7 +4,7 @@ This repository includes an (re-)implementation, using updated Tensorflow APIs, 
 
 For users who wants to use the standard 3D Unet, you need to modify network.py by removing line 62-67 and 72-79. Do not use "_att_decoding_block_layer" in "_build_network". Should you have any question, open an issue and I will respond.
 
-Created by [Zhengyang Wang](http://www.linkedin.com/in/zhengyangwang1991) and [Shuiwang Ji](http://www.linkedin.com/in/shuiwang-ji-9a040715/) at Texas A&M University.
+Created by [Zhengyang Wang](http://people.tamu.edu/~zhengyang.wang/) and [Shuiwang Ji](http://people.tamu.edu/~sji/index.html) at Texas A&M University.
 
 ## Update
 **10/01/2018**:
