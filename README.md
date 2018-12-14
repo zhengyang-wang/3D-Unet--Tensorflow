@@ -14,7 +14,17 @@ Created by [Zhengyang Wang](http://people.tamu.edu/~zhengyang.wang/) and [Shuiwa
 
 ## Publication
 
-Our paper "Global Deep Learning Methods for Isointense Infant Brain Image Segmentation" has been submitted to IEEE Medical Imaging.
+Our paper is available at [https://arxiv.org/abs/1812.04103](https://arxiv.org/abs/1812.04103).
+
+If using this code , please cite our paper.
+```
+@article{wang2018global,
+  title={Global deep learning methods for multimodality isointense infant brain image segmentation},
+  author={Wang, Zhengyang and Zou, Na and Shen, Dinggang and Ji, Shuiwang},
+  journal={arXiv preprint arXiv:1812.04103},
+  year={2018}
+}
+```
 
 ## Dataset
 
