@@ -10,7 +10,7 @@ Created by [Zhengyang Wang](http://people.tamu.edu/~zhengyang.wang/) and [Shuiwa
 **10/01/2018**:
 1. The code now works when we have subjects of different spatial sizes.
 
-2. During training, validation and prediction, you only need to change the configures in configure.py. Before, you have to change configures correspondingly in several files like main.py, utils/input_fn.py, etc.
+2. During training, validation and prediction, you only need to change the configures in configure.py. In the old version, you have to change configures correspondingly in several files like main.py, utils/input_fn.py, etc.
 
 ## Publication
 
