@@ -19,7 +19,7 @@ Our paper is available at [https://arxiv.org/abs/1812.04103](https://arxiv.org/a
 If using this code , please cite our paper.
 ```
 @article{wang2018global,
-  title={Global deep learning methods for multimodality isointense infant brain image segmentation},
+  title={Global Deep Learning Methods for Multimodality Isointense Infant Brain Image Segmentation},
   author={Wang, Zhengyang and Zou, Na and Shen, Dinggang and Ji, Shuiwang},
   journal={arXiv preprint arXiv:1812.04103},
   year={2018}
