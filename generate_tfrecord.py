@@ -276,7 +276,7 @@ def generate_files(raw_data_dir, output_path, valid_id, pred_id, patch_size, ove
 		pred_filename = os.path.join(output_path, pred_subject_name+'.tfrecords')
 
 		valid_subject_name = 'subject-%d-valid-%d-patch-%d' % (valid_id, overlap_stepsize, patch_size)
-		valid_filename = os.path.join(output_path, subject_name+'.tfrecords')
+		valid_filename = os.path.join(output_path, valid_subject_name+'.tfrecords')
 
 		# save converted label for fast evaluation
 		converted_label_filename = 'subject-%d-label.npy' % valid_id
