@@ -10,6 +10,7 @@ Created by [Zhengyang Wang](http://people.tamu.edu/~zhengyang.wang/) and [Shuiwa
 
 ## Update
 **11/10/2019**:
+
 Our paper "Non-local U-Nets for Biomedical Image Segmentation" has been accepted by AAAI-20!
 
 **10/01/2018**:
