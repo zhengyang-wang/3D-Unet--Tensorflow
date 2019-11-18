@@ -1,4 +1,6 @@
-# 3D Unet for Isointense Infant Brain Image Segmentation
+# Non-local U-Nets for Biomedical Image Segmentation
+
+This repository provides the experimental code for our paper "Non-local U-Nets for Biomedical Image Segmentation" accepted by AAAI-20.
 
 This repository includes an (re-)implementation, using updated Tensorflow APIs, of [3D Unet](https://github.com/zhengyang-wang/Unet_3D) for isointense infant brain image segmentation. Besides, we implement our proposed global aggregation blocks, which modify self-attention layers for 3D Unet. The user can optionally insert the blocks to the standard 3D Unet.
 
@@ -7,6 +9,9 @@ For users who wants to use the standard 3D Unet, you need to modify network.py b
 Created by [Zhengyang Wang](http://people.tamu.edu/~zhengyang.wang/) and [Shuiwang Ji](http://people.tamu.edu/~sji/index.html) at Texas A&M University.
 
 ## Update
+**11/10/2019**:
+Our paper "Non-local U-Nets for Biomedical Image Segmentation" has been accepted by AAAI-20!
+
 **10/01/2018**:
 1. The code now works when we have subjects of different spatial sizes.
 
@@ -14,7 +19,7 @@ Created by [Zhengyang Wang](http://people.tamu.edu/~zhengyang.wang/) and [Shuiwa
 
 ## Publication
 
-Our paper is available at [https://arxiv.org/abs/1812.04103](https://arxiv.org/abs/1812.04103).
+An old version of our paper is currently available at [https://arxiv.org/abs/1812.04103](https://arxiv.org/abs/1812.04103). The AAAI-20 version will be updated soon.
 
 If using this code , please cite our paper.
 ```
@@ -28,7 +33,7 @@ If using this code , please cite our paper.
 
 ## Dataset
 
-The dataset is from UNC and currently not available to the public. Basically, it is composed of multi-modality isointense infant brain MR images (3D) of 10 subjects. Each subject has two 3D images (modalities), T1WI and T2WI, with a manually created 3D segmentation label.
+The dataset is from UNC and used as the training dataset in [iSeg-2017](http://iseg2017.web.unc.edu/). Basically, it is composed of multi-modality isointense infant brain MR images (3D) of 10 subjects. Each subject has two 3D images (modalities), T1WI and T2WI, with a manually created 3D segmentation label.
 
 It is an important step in brain development study to perform automatic segmentation of infant brain magnetic resonance (MR) images into white matter (WM), grey matter (GM) and cerebrospinal fluid (CSF) regions. This task is especially challenging in the isointense stage (approximately 6-8 months of age) when WM and GM exhibit similar levels of intensities in MR images.
 
@@ -50,7 +55,7 @@ Python 3.5+
 
 #### Python Packages
 
-tensorflow-gpu 1.7+, numpy, scipy
+tensorflow-gpu 1.7 - 1.10, numpy, scipy
 
 ## Configure the network
 
