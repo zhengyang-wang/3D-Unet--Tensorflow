@@ -20,15 +20,15 @@ Our paper "Non-local U-Nets for Biomedical Image Segmentation" has been accepted
 
 ## Publication
 
-An old version of our paper is currently available at [https://arxiv.org/abs/1812.04103](https://arxiv.org/abs/1812.04103). The AAAI-20 version will be updated soon.
+The paper is available at [https://www.aaai.org/Papers/AAAI/2020GB/AAAI-WangZ.5933.pdf](https://www.aaai.org/Papers/AAAI/2020GB/AAAI-WangZ.5933.pdf).
 
 If using this code , please cite our paper.
 ```
-@article{wang2018global,
-  title={Global Deep Learning Methods for Multimodality Isointense Infant Brain Image Segmentation},
+@inproceedings{wang2020non,
+  title={Non-local U-Nets for Biomedical Image Segmentation},
   author={Wang, Zhengyang and Zou, Na and Shen, Dinggang and Ji, Shuiwang},
-  journal={arXiv preprint arXiv:1812.04103},
-  year={2018}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  year={2020}
 }
 ```
 
